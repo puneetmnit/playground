@@ -7,13 +7,17 @@
 //
 
 #include <iostream>
-#include <vector>
-#include <list>
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    auto f = [](auto&& y){std::cout << "Hello " << y << "!\n";};
-    f("asdf");
+    //auto f = [](auto&& y){std::cout << "Hello " << y << "!\n";};
+    //f("asdf");
+    
+   
+    std::cout << "Hello World\n";
+    
+    
+    
     
     //std::cout << "Hello, World!\n";
     return 0;
