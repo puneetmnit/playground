@@ -20,20 +20,28 @@ void out(std::vector<int>& vec)
     } 
 }
 
-int main() {
-    constexpr int MAXN =10001;
-    vector<int> nums(MAXN, 1);
+int main(int argc, char** argv) 
+{
+    if (argc != 2)
+    {
+        cout << "Incorrect arguments: " << endl;
+        cout << "Usage: " << argv[0] << " <max num>" << endl;
+        return 1;
+    }
+    
+    int n = atoi( argv[1] );
+    vector<int> nums(n, 1);
 
-    vector<int> next(MAXN) ; //to get the next non-deleted value
+    vector<int> next(n) ; //to get the next non-deleted value
     iota(next.begin(), next.end(), 1);
 
-    vector<int> prev(MAXN) ; //to get the prev non-deleted value
+    vector<int> prev(n) ; //to get the prev non-deleted value
     iota(prev.begin(), prev.end(), -1);
 
-    out(nums);
+    //out(nums);
 
 
-    int count = 0;
+    //int count = 0;
     for (size_t i = 2; i*i < nums.size(); i=next[i]) {
         int j = i;
         //cout << "\nCutting: " ;
@@ -48,17 +56,16 @@ int main() {
                 prev[next[j]] = prev[j];
             }
 
-            ++count;
+            //++count;
         } 
         //cout << "num of cuts: " << count;
-        out(nums);
+        //out(nums);
         
     }
 
-    //out(nums);
-    cout << endl << "comparisons: " << count << endl;
+    out(nums);
+    //cout << endl << "comparisons: " << count << endl;
 
-    //out(nums);
 
     return 0;
 } 

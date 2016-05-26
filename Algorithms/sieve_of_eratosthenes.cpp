@@ -20,40 +20,47 @@ void out(std::vector<int>& vec)
     } 
 }
 
-int main() {
-    constexpr int MAXN =101;
-    vector<int> nums(MAXN, 1);
+int main(int argc, char** argv) 
+{
+    if (argc != 2)
+    {
+        cout << "Incorrect arguments: " << endl;
+        cout << "Usage: " << argv[0] << " <max num>" << endl;
+        return 1;
+    }
+    
+    int n = atoi( argv[1] );
+    vector<int> nums(n, 1);
 
-    out(nums);
+    //out(nums);
 
     nums[0] = nums[1] = 0;
 
 
-    int count = 0;
+    //int count = 0;
     for (size_t i = 2; i*i < nums.size(); ++i) {
 
         if ( nums[i] == 1) {
             size_t j = i*i;
-            cout << "\nCutting: " ;
+            //cout << "\nCutting: " ;
             while ( j < nums.size() ) {
-                cout << j << " ";
+                //cout << j << " ";
                 nums[j] = 0;
 
                 j += i;
 
-                ++count;
+                //++count;
             } 
             //cout << "num of cuts: " << count;
-            out(nums);
+            //out(nums);
 
         }
 
     }
 
-    //out(nums);
-    cout << endl << "comparisons: " << count << endl;
+    //cout << endl << "comparisons: " << count << endl;
 
-    //out(nums);
+    out(nums);
 
     return 0;
 } 
