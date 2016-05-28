@@ -4,6 +4,7 @@
  * */
 
 #include <algorithm>
+#include <array>
 #include <cassert>
 #include <iostream>
 #include <iterator>
@@ -49,5 +50,8 @@ int main()
 
     cout << "Max_diff: " << max_diff(vec.begin(), vec.end());
     cout << endl;
+
+    array<int, 10> rev{10,9,8,7,6,5,4,3,2,1};
+    cout << "Max_diff: " << max_diff(rev.begin(), rev.end());
 
 }
