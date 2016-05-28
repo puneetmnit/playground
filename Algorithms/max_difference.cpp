@@ -4,6 +4,7 @@
  * */
 
 #include <algorithm>
+#include <cassert>
 #include <iostream>
 #include <iterator>
 #include <random> 
@@ -17,17 +18,16 @@ auto max_diff(Iter beg, Iter end)
 {
     using ValueType = typename std::iterator_traits<Iter>::value_type;
 
-    if (end - beg < 2) {
-        return 0;
-    }
+    assert(end-beg >= 2);
 
-    Iter next = next(beg);
-    ValueType max_diff = *next - *beg;
+
+    Iter curr = next(beg);
+    ValueType max_diff = *curr - *beg;
     ValueType min_value = *beg;
-    while (++next != end) {
-        max_diff = max(max_diff, *next - min_value);
-        min_value = min(min_value, *next):
-    }
+    for_each(curr, end, [&max_diff, &min_value](auto&& x){
+                max_diff = max(max_diff, x - min_value);
+                min_value = min(min_value, x);
+            } );
 
     return max_diff;
 
