@@ -25,10 +25,40 @@ namespace utils
         Engine generator(seed);
 
         generate(beg, end, [&](){ return dist(generator); });
-    } 
+    }
 
+    /* to print a range
+     */
+
+    template<typename Iterator>
+    class Range {
+    public:
+        Range() = default;
+        Range(Iterator begin, Iterator end) : begin_(begin), end_(end){}
+        Iterator begin() const { return begin_ ;}
+        Iterator end() const { return end_ ; }
+
+    private:
+        Iterator begin_, end_;
+    };
+
+    template<typename Iterator>
+    Range<Iterator> make_range(Iterator begin, Iterator end) {
+        return Range<Iterator>(begin, end);
+    }
 
 }// namespace utils
+template <typename Iterator>
+std::ostream& operator<<(std::ostream& os, const utils::Range<Iterator>& range) {
+    os << "[";
+    for(Iterator i = range.begin(); i != range.end(); ++i) {
+        if (i != range.begin()) os << ",";
+        os << *i ;
+
+    }
+    os << "]";
+    return os;
+}
 
      
 #endif // _PLAYGROUND_ALGORITHMS_LIB_UTILS_H__
