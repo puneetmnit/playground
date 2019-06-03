@@ -18,6 +18,9 @@ namespace Trie {
     void insert(Node *root, const std::string &key) ;
 
     bool find(Node *root, const std::string &key) ;
+    
+    //@todo delete
+    // bool delete(Node* root, const std::string& key);
 }
 
 #endif //ALGORITHMS_TRIE_H_H
