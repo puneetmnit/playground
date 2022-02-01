@@ -1,0 +1,31 @@
+/**@file	playground/Algorithms/lib/utils.cpp
+ * @author	puneet
+ * @version	704
+ * @date
+ * 	Created:	Thu Jun  2 00:40:37 2016 \n
+ * 	Last Update:	Thu Jun  2 00:40:37 2016
+ */
+
+/*===========================================================================*/
+/*===============================[ Test  ]===============================*/
+/*===========================================================================*/
+//test utils.h
+#include "utils.h"
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <vector>
+
+/*===========================================================================*/
+/*===============================[ Test  ]===============================*/
+/*===========================================================================*/
+ 
+int main()
+{
+    std::vector<int> vec(10);
+    utils::random_fill(vec.begin(), vec.end(), 1, 10);
+
+    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, " "));
+
+}
+
